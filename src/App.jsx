@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import Card from "./components/Card";
 import List from "./components/List";
+import BreweryMap from "./components/BreweryMap";
 import "./App.css";
 
 const App = () => {
@@ -23,6 +24,8 @@ const App = () => {
         )}
       </div>
 
+      <BreweryMap />
+      
       <List setTopBrewery={setTopBrewery} />
     </div>
   );

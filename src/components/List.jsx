@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BreweryInfo from "./BreweryInfo";
 
 const List = ({ setTopBrewery }) => {
     const [breweries, setBreweries] = useState([]);
@@ -51,15 +52,45 @@ const List = ({ setTopBrewery }) => {
                     ))}
                 </select>
             </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {filteredResults.map((brewery, index) => (
+                        // <tr key={index}>
+                        //     <td>{brewery.name}</td>
+                        //     <td>{brewery.city}</td>
+                        //     <td>{brewery.state}</td>
+                        //     <td>{brewery.brewery_type.toUpperCase()}</td>
+                        // </tr>
+                        <BreweryInfo
+                            key={index}
+                            id={brewery.id}
+                            name={brewery.name}
+                            city={brewery.city}
+                            state={brewery.state}
+                            link={brewery.website_url}
+                            type={brewery.brewery_type.toUpperCase()}
+                        />
+                    ))}
+                </tbody>
+            </table>
             
-            {filteredResults.map((brewery, index) => (
+            {/* {filteredResults.map((brewery, index) => (
                 <div key={index} className="main-list">
                     <h2>{brewery.name}</h2>
                     <h4>Address: {brewery.street} {brewery.city}, {brewery.state}</h4>
                     <h5>{brewery.brewery_type.toUpperCase()} Berwery</h5>
                     <p><a href={brewery.website_url} target="_blank">{brewery.name}</a></p>
                 </div>
-            ))}
+            ))} */}
         </div>
     );
 };
